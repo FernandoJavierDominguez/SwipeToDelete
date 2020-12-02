@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.fernandodominguezpacheco.reign.R
 import com.fernandodominguezpacheco.reign.Story
 import com.fernandodominguezpacheco.reign.databinding.RowStoryBinding
+import com.fernandodominguezpacheco.reign.utils.changeDate
 import kotlinx.android.synthetic.main.row_story.view.*
 import kotlin.properties.Delegates
 
@@ -53,7 +54,7 @@ class StoryAdapter(
             with(binding){
                 storyTitle.text = storyItem.story_title
                 internalRow.author.text = storyItem.author
-                internalRow.createdAt.text = storyItem.created_at.toString()
+                internalRow.createdAt.text = storyItem.created_at.changeDate()
             }
         }
 
