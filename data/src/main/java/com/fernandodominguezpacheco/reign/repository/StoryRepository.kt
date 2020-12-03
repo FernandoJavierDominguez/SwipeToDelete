@@ -5,7 +5,6 @@ import com.fernandodominguezpacheco.reign.Story
 import com.fernandodominguezpacheco.reign.datasource.LocalStoryDataSource
 import com.fernandodominguezpacheco.reign.datasource.RefreshDataSource
 import com.fernandodominguezpacheco.reign.datasource.RemoteStoryDataSource
-import java.util.*
 
 class StoryRepository(
     private val localStoryDataSource: LocalStoryDataSource,
@@ -31,6 +30,9 @@ class StoryRepository(
             refresh.date_refresh = stories.first().created_at
             refreshDataSource.updateRefresh(refresh)
         }
+        return localStoryDataSource.getAllStories()
+    }
+    suspend fun getAllStoriesRoom() : List<Story> {
         return localStoryDataSource.getAllStories()
     }
 }

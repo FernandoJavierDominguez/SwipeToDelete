@@ -16,4 +16,7 @@ class MainActivityModule {
     @Provides
     fun deleteStoryProvider(storyRepository: StoryRepository) = DeleteStory(storyRepository)
 
+    @Provides
+    fun getAllStoriesRoomProvider(storyRepository: StoryRepository) = GetAllStoriesRoom(storyRepository)
+
 }

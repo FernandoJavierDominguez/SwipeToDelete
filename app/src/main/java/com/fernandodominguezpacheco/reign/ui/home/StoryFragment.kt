@@ -31,6 +31,7 @@ class StoryFragment : Fragment() {
     private lateinit var binding: FragmentStoryBinding
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
+
     private val adapter = StoryAdapter{
         sharedViewModel.selectStory(it)
         requireView().findNavController().navigate(R.id.action_StoryFragment_to_DetailFragment)
@@ -53,6 +54,7 @@ class StoryFragment : Fragment() {
             observer(viewModel.storyItems) {
                 adapter.items = it as MutableList<Story>
             }
+
         }
         val itemTouchHelper = ItemTouchHelper(SwipeToDelete(adapter))
         itemTouchHelper.attachToRecyclerView(binding.list)

@@ -9,6 +9,8 @@ class StoryApiDataSource @Inject constructor(
     private val apiService: StoryApiService
 ): RemoteStoryDataSource{
 
-    override suspend fun getStories(): MutableList<Story> = apiService.getAllStories().hits.map { it.toStory() }.toMutableList()
+    override suspend fun getStories(): MutableList<Story> {
+        return apiService.getAllStories().hits.map { it.toStory() }.toMutableList()
+    }
 
 }
