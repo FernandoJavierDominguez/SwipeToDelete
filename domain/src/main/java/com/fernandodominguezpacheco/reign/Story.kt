@@ -8,5 +8,4 @@ data class Story (
     var author:  String? = "",
     var story_url : String? = "",
     var created_at : Date = Date()
-){
-}
+)
