@@ -1,10 +1,10 @@
 package com.fernandodominguezpacheco.reign.framework
 
-import com.fernandodominguezpacheco.reign.Story
 import com.fernandodominguezpacheco.reign.Refresh
+import com.fernandodominguezpacheco.reign.Story
+import com.fernandodominguezpacheco.reign.framework.db.Refresh as RoomRefresh
 import com.fernandodominguezpacheco.reign.framework.db.Story as RoomStory
 import com.fernandodominguezpacheco.reign.framework.server.Story as ServerStory
-import com.fernandodominguezpacheco.reign.framework.db.Refresh as RoomRefresh
 
 fun Story.toRoomStory(): RoomStory = RoomStory(
     id,
@@ -28,7 +28,6 @@ fun ServerStory.toStory() : Story = Story(
     author,
     story_url,
     created_at
-
 )
 
 fun Refresh.toRoomRefresh(): RoomRefresh = RoomRefresh(
