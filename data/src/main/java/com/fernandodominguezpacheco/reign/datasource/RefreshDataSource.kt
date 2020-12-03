@@ -1,7 +1,6 @@
 package com.fernandodominguezpacheco.reign.datasource
 
 import com.fernandodominguezpacheco.reign.Refresh
-import com.fernandodominguezpacheco.reign.Story
 
 interface RefreshDataSource {
     suspend fun isEmpty(): Boolean
