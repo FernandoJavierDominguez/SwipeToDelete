@@ -3,7 +3,7 @@ package com.fernandodominguezpacheco.reign.ui.home
 import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.RecyclerView
 
-class SwipeToDelete(var adapter: StoryAdapter) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.RIGHT) {
+class SwipeToDelete(var adapter: StoryAdapter) : ItemTouchHelper.SimpleCallback(0, ItemTouchHelper.LEFT) {
     override fun onMove(
         recyclerView: RecyclerView,
         viewHolder: RecyclerView.ViewHolder,
