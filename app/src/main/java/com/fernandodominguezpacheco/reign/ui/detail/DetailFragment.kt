@@ -13,6 +13,10 @@ import com.fernandodominguezpacheco.reign.utils.SharedViewModel
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_detail.*
 
+
+/**
+ * A fragment representing a detail of Story.
+ */
 @AndroidEntryPoint
 class DetailFragment : Fragment() {
 
