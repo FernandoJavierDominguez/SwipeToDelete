@@ -26,3 +26,4 @@ In your gradle:
   - Room 
   - Retrofit
   - OkHttp3
+  - Coroutines
