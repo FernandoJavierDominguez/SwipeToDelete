@@ -28,7 +28,8 @@ class StoryFragment : Fragment() {
 
     private val viewModel : StoryViewModel by viewModels()
     private val sharedViewModel : SharedViewModel by activityViewModels()
-    private lateinit var binding: FragmentStoryBinding
+    private var _binding: FragmentStoryBinding?= null
+    private val binding get() = _binding!!
     private lateinit var swipeRefreshLayout: SwipeRefreshLayout
 
 
@@ -40,9 +41,14 @@ class StoryFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        binding = FragmentStoryBinding.inflate(layoutInflater)
+        _binding = FragmentStoryBinding.inflate(layoutInflater)
+        return binding.root
+
+    }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         with(binding) {
             list.adapter = adapter
             list.addItemDecoration(
@@ -66,8 +72,11 @@ class StoryFragment : Fragment() {
             viewModel.getStories()
             swipeRefreshLayout.isRefreshing = false
         }
-        return binding.root
 
+    }
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
     override fun onResume() {
         super.onResume()

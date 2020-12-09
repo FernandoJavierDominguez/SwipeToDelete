@@ -21,14 +21,20 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 class DetailFragment : Fragment() {
 
     private val sharedViewModel : SharedViewModel by activityViewModels()
-    private lateinit var binding: FragmentDetailBinding
+    private var _binding: FragmentDetailBinding?= null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
             inflater: LayoutInflater, container: ViewGroup?,
             savedInstanceState: Bundle?
-    ): View? {
+    ): View {
 
-        binding = FragmentDetailBinding.inflate(layoutInflater)
+        _binding = FragmentDetailBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         with(binding){
             webView.webChromeClient = object : WebChromeClient(){
             }
@@ -42,6 +48,6 @@ class DetailFragment : Fragment() {
             webView.loadUrl(it.story_url ?: "http://www.google.com")
             binding.storyTitle.text = it.story_title
         })
-        return binding.root
     }
+
 }
