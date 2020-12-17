@@ -31,7 +31,7 @@ class AppModule {
     fun databaseProvider(app: Application) = Room.databaseBuilder(
         app,
         StoryDb::class.java,
-        "checklist-db"
+        "reign-db"
     ).build()
 
     @Provides
