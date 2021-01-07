@@ -5,14 +5,15 @@ import com.fernandodominguezpacheco.reign.datasource.LocalStoryDataSource
 import com.fernandodominguezpacheco.reign.framework.toRoomStory
 import com.fernandodominguezpacheco.reign.framework.toStory
 import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.withContext
 
 class RoomStoryDataSource(db: StoryDb) : LocalStoryDataSource {
 
     private val storyDao = db.storyDao()
 
-    override suspend fun isEmpty(): Boolean =
-        withContext(Dispatchers.IO){ storyDao.storyCount() <= 0}
+    override suspend fun isEmpty(): Boolean = withContext(Dispatchers.IO){ storyDao.storyCount() <= 0 }
 
 
     override suspend fun addStory(story: Story) {
@@ -33,8 +34,10 @@ class RoomStoryDataSource(db: StoryDb) : LocalStoryDataSource {
         }
     }
 
-    override suspend fun getAllStories() : List<Story> = withContext(Dispatchers.IO) {
-            storyDao.getAllStories().map { it.toStory() }
+    override fun getAllStories() : Flow<List<Story>> = storyDao.getAllStories().map {
+        stories -> stories.map{
+            it.toStory()
+        }
     }
 
 }

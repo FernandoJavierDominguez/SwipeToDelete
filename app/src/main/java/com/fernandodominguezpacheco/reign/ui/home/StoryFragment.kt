@@ -69,7 +69,7 @@ class StoryFragment : Fragment() {
         }
         swipeRefreshLayout = binding.swipeRefreshLayout
         swipeRefreshLayout.setOnRefreshListener {
-            viewModel.getStories()
+            viewModel.addStories()
             swipeRefreshLayout.isRefreshing = false
         }
 

@@ -1,11 +1,9 @@
 package com.fernandodominguezpacheco.reign.framework.db
 
 import com.fernandodominguezpacheco.reign.Refresh
-import com.fernandodominguezpacheco.reign.Story
 import com.fernandodominguezpacheco.reign.datasource.RefreshDataSource
 import com.fernandodominguezpacheco.reign.framework.toRefresh
 import com.fernandodominguezpacheco.reign.framework.toRoomRefresh
-import com.fernandodominguezpacheco.reign.framework.toStory
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 
@@ -35,7 +33,7 @@ class RoomRefreshDataSource(db: StoryDb) : RefreshDataSource {
         }
     }
 
-    override suspend fun getRefresh(): Refresh = withContext(Dispatchers.IO) {
-        refreshDao.getRefresh().toRefresh()
-    }
+    override suspend fun getRefresh(): Refresh = refreshDao.getRefresh().toRefresh()
+
+
 }

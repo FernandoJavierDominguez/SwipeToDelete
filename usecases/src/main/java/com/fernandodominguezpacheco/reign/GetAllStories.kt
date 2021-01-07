@@ -1,9 +1,10 @@
 package com.fernandodominguezpacheco.reign
 
 import com.fernandodominguezpacheco.reign.repository.StoryRepository
+import kotlinx.coroutines.flow.Flow
 
 class GetAllStories (private val storyRepository: StoryRepository) {
 
-    suspend fun invoke() : List<Story> = storyRepository.getAllStories()
+    fun invoke() : Flow<List<Story>> = storyRepository.getAllStories()
 
 }

@@ -4,12 +4,13 @@ import androidx.room.Dao
 import androidx.room.Delete
 import androidx.room.Insert
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface StoryDao {
 
     @Query("SELECT * FROM Story ORDER BY created_at DESC")
-    suspend fun getAllStories(): List<Story>
+    fun getAllStories(): Flow<List<Story>>
 
     @Query("SELECT COUNT(id) FROM Story")
     fun storyCount(): Int
